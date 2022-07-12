@@ -1,0 +1,217 @@
+openapi: 3.0.1
+info:
+  title: Grafana Loki
+  version: 2.6.x
+externalDocs:
+  url: https://grafana.com/docs/loki/latest/api/
+paths:
+  /loki/api/v1/query:
+    get:
+      tags:
+        - Query
+      parameters:
+        - name: query
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            default: 100
+        - name: time
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: direction
+          in: query
+          required: true
+          schema:
+            enum:
+              - "forward"
+              - "backward"
+            default: "backward"
+        - name: X-Scope-OrgID
+          in: header
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QueryResponseBody"
+components:
+  schemas:
+    QueryResponseBody:
+      required:
+        - status
+        - data
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          $ref: "#/components/schemas/QueryResponseData"
+      example:
+        id: 01FCNDV6P870EA6S7TK1DSYDG0
+        name: My test API key
+    QueryResponseData:
+      type: object
+      required:
+        - resultType
+        - result
+        - stats
+      properties:
+        resultType:
+          enum:
+            - vector
+            - streams
+        result:
+          type: array
+          items:
+            $ref: "#/components/schemas/QueryResponseResult"
+        stats:
+          $ref: "#/components/schemas/QueryStatistics"
+    QueryResponseResult:
+      type: object
+      required:
+        - value
+      properties:
+        metric:
+          $ref: "#/components/schemas/QueryResponseMetric"
+        streams:
+          $ref: "#/components/schemas/QueryResponseStreams"
+        value:
+          type: array
+          items:
+            type: string
+    QueryStatistics:
+      type: object
+      required:
+        - summary
+        - querier
+        - ingester
+      properties:
+        summary:
+          $ref: "#/components/schemas/QueryStatisticsSummary"
+        querier:
+          $ref: "#/components/schemas/QueryStatisticsQuerier"
+        ingester:
+          $ref: "#/components/schemas/QueryStatisticsIngester"
+    QueryStatisticsSummary:
+      type: object
+      properties:
+        bytesProcessedPerSecond:
+          type: integer
+          minimum: 0
+        linesProcessedPerSecond:
+          type: integer
+          minimum: 0
+        totalBytesProcessed:
+          type: integer
+          minimum: 0
+        totalLinesProcessed:
+          type: integer
+          minimum: 0
+        execTime:
+          type: integer
+          minimum: 0
+        queueTime:
+          type: integer
+          minimum: 0
+        subqueries:
+          type: integer
+          minimum: 0
+        totalEntriesReturned:
+          type: integer
+          minimum: 0
+    QueryStatisticsQuerier:
+      type: object
+      required:
+        - store
+      properties:
+        store:
+          $ref: "#/components/schemas/QueryStatisticsStore"
+    QueryStatisticsIngester:
+      type: object
+      required:
+        - totalReached
+        - totalChunksMatched
+        - totalBatches
+        - totalLinesSent
+      properties:
+        totalReached:
+          type: integer
+          minimum: 0
+        totalChunksMatched:
+          type: integer
+          minimum: 0
+        totalBatches:
+          type: integer
+          minimum: 0
+        totalLinesSent:
+          type: integer
+          minimum: 0
+        store:
+          $ref: "#/components/schemas/QueryStatisticsStore"
+    QueryStatisticsStore:
+      type: object
+      required:
+        - totalChunksRef
+        - totalChunksDownloaded
+        - chunksDownloadTime
+      properties:
+        totalChunksRef:
+          type: integer
+          minimum: 0
+        totalChunksDownloaded:
+          type: integer
+          minimum: 0
+        chunksDownloadTime:
+          type: integer
+          minimum: 0
+        chunk:
+          type: object
+          required:
+            - headChunkBytes
+            - headChunkLines
+            - decompressedBytes
+            - decompressedLines
+            - compressedBytes
+          properties:
+            headChunkBytes:
+              type: integer
+              minimum: 0
+            headChunkLines:
+              type: integer
+              minimum: 0
+            decompressedBytes:
+              type: integer
+              minimum: 0
+            decompressedLines:
+              type: integer
+              minimum: 0
+            compressedBytes:
+              type: integer
+              minimum: 0
+            totalDuplicates:
+              type: integer
+              minimum: 0
+    QueryResponseStreams:
+      type: object
+    QueryResponseMetric:
+      type: object
+      properties:
+        level:
+          enum:
+            - error
+            - warn
+            - info
+            - debug
