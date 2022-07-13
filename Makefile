@@ -1,33 +1,38 @@
 .SILENT: fmt check lint
 
+generate:
+	rm -rf grafana_loki_client
+
+	openapi-python-client generate --meta none --path grafana_loki_openapi.yaml
+
+	touch grafana_loki_client/py.typed
+	make fmt
+
 fmt:
 	find . -type d -name ".venv" -prune -o -print -type f -name "*.py" \
-		-exec pyupgrade --exit-zero-even-if-changed --py310-plus {} \+ 1> /dev/null
+		-exec pyupgrade --exit-zero-even-if-changed --py37-plus {} \+ 1> /dev/null
 	autoflake \
 		--in-place \
 		--remove-all-unused-imports \
 		--ignore-init-module-imports \
 		-r \
-		<project-name>
+		.
 	isort --profile black .
 	black .
 
 check:
 	find . -type d -name ".venv" -prune -o -print -type f -name "*.py" \
-		-exec pyupgrade --py310-plus {} \+ 1> /dev/null
+		-exec pyupgrade --py37-plus {} \+ 1> /dev/null
 	autoflake \
 		--in-place \
 		--remove-all-unused-imports \
 		--ignore-init-module-imports \
 		-r \
 		-c \
-		<project-name>
+		.
 	isort --profile black -c .
 	black --check .
 
 lint:
-	mypy <project-name>
+	mypy .
 	flake8 .
-
-test:
-	pytest -x --cov=core --cov=<project-name> --cov-fail-under=90

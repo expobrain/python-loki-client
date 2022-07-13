@@ -128,5 +128,18 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Skip jar files
+*.jar
+
+# Openapi-generator ignored files
+.gitlab-ci.yml
+.gitpod.yml
+.travis.yml
+git_push.sh
+requirements.txt
+setup.cfg
+setup.py
+test-requirements.txt
+
 # VSCode
-.vscode/
+.vscode
