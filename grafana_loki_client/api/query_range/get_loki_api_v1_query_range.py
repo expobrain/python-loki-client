@@ -3,9 +3,7 @@ from typing import Any, Dict, Optional, Union
 import httpx
 
 from ...client import Client
-from ...models.get_loki_api_v1_query_range_direction import (
-    GetLokiApiV1QueryRangeDirection,
-)
+from ...models.direction import Direction
 from ...models.query_response_body import QueryResponseBody
 from ...types import UNSET, Response, Unset
 
@@ -15,13 +13,11 @@ def _get_kwargs(
     client: Client,
     query: str,
     limit: Union[Unset, None, int] = 100,
-    start: Union[Unset, None, int] = UNSET,
-    end: Union[Unset, None, int] = UNSET,
-    step: Union[Unset, None, str] = UNSET,
+    start: Union[None, Unset, float, int, str] = UNSET,
+    end: Union[None, Unset, float, int, str] = UNSET,
+    step: Union[None, Unset, float, int, str] = UNSET,
     interval: Union[Unset, None, float] = UNSET,
-    direction: Union[
-        Unset, None, GetLokiApiV1QueryRangeDirection
-    ] = GetLokiApiV1QueryRangeDirection.BACKWARD,
+    direction: Union[Unset, None, Direction] = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
 ) -> Dict[str, Any]:
     url = f"{client.base_url}/loki/api/v1/query_range"
@@ -37,11 +33,38 @@ def _get_kwargs(
 
     params["limit"] = limit
 
-    params["start"] = start
+    json_start: Union[None, Unset, float, int, str]
+    if isinstance(start, Unset):
+        json_start = UNSET
+    elif start is None:
+        json_start = None
 
-    params["end"] = end
+    else:
+        json_start = start
 
-    params["step"] = step
+    params["start"] = json_start
+
+    json_end: Union[None, Unset, float, int, str]
+    if isinstance(end, Unset):
+        json_end = UNSET
+    elif end is None:
+        json_end = None
+
+    else:
+        json_end = end
+
+    params["end"] = json_end
+
+    json_step: Union[None, Unset, float, int, str]
+    if isinstance(step, Unset):
+        json_step = UNSET
+    elif step is None:
+        json_step = None
+
+    else:
+        json_step = step
+
+    params["step"] = json_step
 
     params["interval"] = interval
 
@@ -85,25 +108,22 @@ def sync_detailed(
     client: Client,
     query: str,
     limit: Union[Unset, None, int] = 100,
-    start: Union[Unset, None, int] = UNSET,
-    end: Union[Unset, None, int] = UNSET,
-    step: Union[Unset, None, str] = UNSET,
+    start: Union[None, Unset, float, int, str] = UNSET,
+    end: Union[None, Unset, float, int, str] = UNSET,
+    step: Union[None, Unset, float, int, str] = UNSET,
     interval: Union[Unset, None, float] = UNSET,
-    direction: Union[
-        Unset, None, GetLokiApiV1QueryRangeDirection
-    ] = GetLokiApiV1QueryRangeDirection.BACKWARD,
+    direction: Union[Unset, None, Direction] = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
 ) -> Response[QueryResponseBody]:
     """
     Args:
         query (str):
         limit (Union[Unset, None, int]):  Default: 100.
-        start (Union[Unset, None, int]):
-        end (Union[Unset, None, int]):
-        step (Union[Unset, None, str]):
+        start (Union[None, Unset, float, int, str]):
+        end (Union[None, Unset, float, int, str]):
+        step (Union[None, Unset, float, int, str]):
         interval (Union[Unset, None, float]):
-        direction (Union[Unset, None, GetLokiApiV1QueryRangeDirection]):  Default:
-            GetLokiApiV1QueryRangeDirection.BACKWARD.
+        direction (Union[Unset, None, Direction]):  Default: Direction.BACKWARD.
         x_scope_org_id (Union[Unset, str]):
 
     Returns:
@@ -135,25 +155,22 @@ def sync(
     client: Client,
     query: str,
     limit: Union[Unset, None, int] = 100,
-    start: Union[Unset, None, int] = UNSET,
-    end: Union[Unset, None, int] = UNSET,
-    step: Union[Unset, None, str] = UNSET,
+    start: Union[None, Unset, float, int, str] = UNSET,
+    end: Union[None, Unset, float, int, str] = UNSET,
+    step: Union[None, Unset, float, int, str] = UNSET,
     interval: Union[Unset, None, float] = UNSET,
-    direction: Union[
-        Unset, None, GetLokiApiV1QueryRangeDirection
-    ] = GetLokiApiV1QueryRangeDirection.BACKWARD,
+    direction: Union[Unset, None, Direction] = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
 ) -> Optional[QueryResponseBody]:
     """
     Args:
         query (str):
         limit (Union[Unset, None, int]):  Default: 100.
-        start (Union[Unset, None, int]):
-        end (Union[Unset, None, int]):
-        step (Union[Unset, None, str]):
+        start (Union[None, Unset, float, int, str]):
+        end (Union[None, Unset, float, int, str]):
+        step (Union[None, Unset, float, int, str]):
         interval (Union[Unset, None, float]):
-        direction (Union[Unset, None, GetLokiApiV1QueryRangeDirection]):  Default:
-            GetLokiApiV1QueryRangeDirection.BACKWARD.
+        direction (Union[Unset, None, Direction]):  Default: Direction.BACKWARD.
         x_scope_org_id (Union[Unset, str]):
 
     Returns:
@@ -178,25 +195,22 @@ async def asyncio_detailed(
     client: Client,
     query: str,
     limit: Union[Unset, None, int] = 100,
-    start: Union[Unset, None, int] = UNSET,
-    end: Union[Unset, None, int] = UNSET,
-    step: Union[Unset, None, str] = UNSET,
+    start: Union[None, Unset, float, int, str] = UNSET,
+    end: Union[None, Unset, float, int, str] = UNSET,
+    step: Union[None, Unset, float, int, str] = UNSET,
     interval: Union[Unset, None, float] = UNSET,
-    direction: Union[
-        Unset, None, GetLokiApiV1QueryRangeDirection
-    ] = GetLokiApiV1QueryRangeDirection.BACKWARD,
+    direction: Union[Unset, None, Direction] = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
 ) -> Response[QueryResponseBody]:
     """
     Args:
         query (str):
         limit (Union[Unset, None, int]):  Default: 100.
-        start (Union[Unset, None, int]):
-        end (Union[Unset, None, int]):
-        step (Union[Unset, None, str]):
+        start (Union[None, Unset, float, int, str]):
+        end (Union[None, Unset, float, int, str]):
+        step (Union[None, Unset, float, int, str]):
         interval (Union[Unset, None, float]):
-        direction (Union[Unset, None, GetLokiApiV1QueryRangeDirection]):  Default:
-            GetLokiApiV1QueryRangeDirection.BACKWARD.
+        direction (Union[Unset, None, Direction]):  Default: Direction.BACKWARD.
         x_scope_org_id (Union[Unset, str]):
 
     Returns:
@@ -226,25 +240,22 @@ async def asyncio(
     client: Client,
     query: str,
     limit: Union[Unset, None, int] = 100,
-    start: Union[Unset, None, int] = UNSET,
-    end: Union[Unset, None, int] = UNSET,
-    step: Union[Unset, None, str] = UNSET,
+    start: Union[None, Unset, float, int, str] = UNSET,
+    end: Union[None, Unset, float, int, str] = UNSET,
+    step: Union[None, Unset, float, int, str] = UNSET,
     interval: Union[Unset, None, float] = UNSET,
-    direction: Union[
-        Unset, None, GetLokiApiV1QueryRangeDirection
-    ] = GetLokiApiV1QueryRangeDirection.BACKWARD,
+    direction: Union[Unset, None, Direction] = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
 ) -> Optional[QueryResponseBody]:
     """
     Args:
         query (str):
         limit (Union[Unset, None, int]):  Default: 100.
-        start (Union[Unset, None, int]):
-        end (Union[Unset, None, int]):
-        step (Union[Unset, None, str]):
+        start (Union[None, Unset, float, int, str]):
+        end (Union[None, Unset, float, int, str]):
+        step (Union[None, Unset, float, int, str]):
         interval (Union[Unset, None, float]):
-        direction (Union[Unset, None, GetLokiApiV1QueryRangeDirection]):  Default:
-            GetLokiApiV1QueryRangeDirection.BACKWARD.
+        direction (Union[Unset, None, Direction]):  Default: Direction.BACKWARD.
         x_scope_org_id (Union[Unset, str]):
 
     Returns:

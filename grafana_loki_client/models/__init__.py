@@ -1,7 +1,6 @@
 """ Contains all the data models used in inputs/outputs """
 
-from .get_loki_api_v1_query_direction import GetLokiApiV1QueryDirection
-from .get_loki_api_v1_query_range_direction import GetLokiApiV1QueryRangeDirection
+from .direction import Direction
 from .query_response_body import QueryResponseBody
 from .query_response_data import QueryResponseData
 from .query_response_data_result_type import QueryResponseDataResultType

@@ -31,10 +31,7 @@ paths:
           in: query
           required: true
           schema:
-            enum:
-              - "forward"
-              - "backward"
-            default: "backward"
+            $ref: "#/components/schemas/Direction"
         - name: X-Scope-OrgID
           in: header
           schema:
@@ -65,15 +62,15 @@ paths:
         - name: start
           in: query
           schema:
-            type: integer
+            $ref: "#/components/schemas/TimestampFormat"
         - name: end
           in: query
           schema:
-            type: integer
+            $ref: "#/components/schemas/TimestampFormat"
         - name: step
           in: query
           schema:
-            type: string
+            $ref: "#/components/schemas/TimestampFormat"
         - name: interval
           in: query
           schema:
@@ -81,10 +78,7 @@ paths:
         - name: direction
           in: query
           schema:
-            enum:
-              - "forward"
-              - "backward"
-            default: "backward"
+            $ref: "#/components/schemas/Direction"
         - name: X-Scope-OrgID
           in: header
           schema:
@@ -98,6 +92,16 @@ paths:
                 $ref: "#/components/schemas/QueryResponseBody"
 components:
   schemas:
+    Direction:
+      enum:
+        - "forward"
+        - "backward"
+      default: "backward"
+    TimestampFormat:
+      oneOf:
+        - type: string
+        - type: integer
+        - type: number
     QueryResponseBody:
       required:
         - status

@@ -4,7 +4,7 @@ from typing import Any, Dict, Optional, Union
 import httpx
 
 from ...client import Client
-from ...models.get_loki_api_v1_query_direction import GetLokiApiV1QueryDirection
+from ...models.direction import Direction
 from ...models.query_response_body import QueryResponseBody
 from ...types import UNSET, Response, Unset
 
@@ -15,7 +15,7 @@ def _get_kwargs(
     query: str,
     limit: int = 100,
     time: Union[Unset, None, datetime.datetime] = UNSET,
-    direction: GetLokiApiV1QueryDirection = GetLokiApiV1QueryDirection.BACKWARD,
+    direction: Direction = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
 ) -> Dict[str, Any]:
     url = f"{client.base_url}/loki/api/v1/query"
@@ -76,7 +76,7 @@ def sync_detailed(
     query: str,
     limit: int = 100,
     time: Union[Unset, None, datetime.datetime] = UNSET,
-    direction: GetLokiApiV1QueryDirection = GetLokiApiV1QueryDirection.BACKWARD,
+    direction: Direction = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
 ) -> Response[QueryResponseBody]:
     """
@@ -84,7 +84,7 @@ def sync_detailed(
         query (str):
         limit (int):  Default: 100.
         time (Union[Unset, None, datetime.datetime]):
-        direction (GetLokiApiV1QueryDirection):  Default: GetLokiApiV1QueryDirection.BACKWARD.
+        direction (Direction):  Default: Direction.BACKWARD.
         x_scope_org_id (Union[Unset, str]):
 
     Returns:
@@ -114,7 +114,7 @@ def sync(
     query: str,
     limit: int = 100,
     time: Union[Unset, None, datetime.datetime] = UNSET,
-    direction: GetLokiApiV1QueryDirection = GetLokiApiV1QueryDirection.BACKWARD,
+    direction: Direction = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
 ) -> Optional[QueryResponseBody]:
     """
@@ -122,7 +122,7 @@ def sync(
         query (str):
         limit (int):  Default: 100.
         time (Union[Unset, None, datetime.datetime]):
-        direction (GetLokiApiV1QueryDirection):  Default: GetLokiApiV1QueryDirection.BACKWARD.
+        direction (Direction):  Default: Direction.BACKWARD.
         x_scope_org_id (Union[Unset, str]):
 
     Returns:
@@ -145,7 +145,7 @@ async def asyncio_detailed(
     query: str,
     limit: int = 100,
     time: Union[Unset, None, datetime.datetime] = UNSET,
-    direction: GetLokiApiV1QueryDirection = GetLokiApiV1QueryDirection.BACKWARD,
+    direction: Direction = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
 ) -> Response[QueryResponseBody]:
     """
@@ -153,7 +153,7 @@ async def asyncio_detailed(
         query (str):
         limit (int):  Default: 100.
         time (Union[Unset, None, datetime.datetime]):
-        direction (GetLokiApiV1QueryDirection):  Default: GetLokiApiV1QueryDirection.BACKWARD.
+        direction (Direction):  Default: Direction.BACKWARD.
         x_scope_org_id (Union[Unset, str]):
 
     Returns:
@@ -181,7 +181,7 @@ async def asyncio(
     query: str,
     limit: int = 100,
     time: Union[Unset, None, datetime.datetime] = UNSET,
-    direction: GetLokiApiV1QueryDirection = GetLokiApiV1QueryDirection.BACKWARD,
+    direction: Direction = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
 ) -> Optional[QueryResponseBody]:
     """
@@ -189,7 +189,7 @@ async def asyncio(
         query (str):
         limit (int):  Default: 100.
         time (Union[Unset, None, datetime.datetime]):
-        direction (GetLokiApiV1QueryDirection):  Default: GetLokiApiV1QueryDirection.BACKWARD.
+        direction (Direction):  Default: Direction.BACKWARD.
         x_scope_org_id (Union[Unset, str]):
 
     Returns:
