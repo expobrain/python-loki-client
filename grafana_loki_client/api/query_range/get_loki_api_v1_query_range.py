@@ -1,3 +1,4 @@
+import datetime
 from typing import Any, Dict, Optional, Union
 
 import httpx
@@ -13,9 +14,9 @@ def _get_kwargs(
     client: Client,
     query: str,
     limit: Union[Unset, None, int] = 100,
-    start: Union[None, Unset, float, int, str] = UNSET,
-    end: Union[None, Unset, float, int, str] = UNSET,
-    step: Union[None, Unset, float, int, str] = UNSET,
+    start: Union[None, Unset, datetime.datetime, float, int] = UNSET,
+    end: Union[None, Unset, datetime.datetime, float, int] = UNSET,
+    step: Union[None, Unset, datetime.datetime, float, int] = UNSET,
     interval: Union[Unset, None, float] = UNSET,
     direction: Union[Unset, None, Direction] = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
@@ -39,6 +40,9 @@ def _get_kwargs(
     elif start is None:
         json_start = None
 
+    elif isinstance(start, datetime.datetime):
+        json_start = start.isoformat()
+
     else:
         json_start = start
 
@@ -50,6 +54,9 @@ def _get_kwargs(
     elif end is None:
         json_end = None
 
+    elif isinstance(end, datetime.datetime):
+        json_end = end.isoformat()
+
     else:
         json_end = end
 
@@ -60,6 +67,9 @@ def _get_kwargs(
         json_step = UNSET
     elif step is None:
         json_step = None
+
+    elif isinstance(step, datetime.datetime):
+        json_step = step.isoformat()
 
     else:
         json_step = step
@@ -108,9 +118,9 @@ def sync_detailed(
     client: Client,
     query: str,
     limit: Union[Unset, None, int] = 100,
-    start: Union[None, Unset, float, int, str] = UNSET,
-    end: Union[None, Unset, float, int, str] = UNSET,
-    step: Union[None, Unset, float, int, str] = UNSET,
+    start: Union[None, Unset, datetime.datetime, float, int] = UNSET,
+    end: Union[None, Unset, datetime.datetime, float, int] = UNSET,
+    step: Union[None, Unset, datetime.datetime, float, int] = UNSET,
     interval: Union[Unset, None, float] = UNSET,
     direction: Union[Unset, None, Direction] = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
@@ -119,9 +129,9 @@ def sync_detailed(
     Args:
         query (str):
         limit (Union[Unset, None, int]):  Default: 100.
-        start (Union[None, Unset, float, int, str]):
-        end (Union[None, Unset, float, int, str]):
-        step (Union[None, Unset, float, int, str]):
+        start (Union[None, Unset, datetime.datetime, float, int]):
+        end (Union[None, Unset, datetime.datetime, float, int]):
+        step (Union[None, Unset, datetime.datetime, float, int]):
         interval (Union[Unset, None, float]):
         direction (Union[Unset, None, Direction]):  Default: Direction.BACKWARD.
         x_scope_org_id (Union[Unset, str]):
@@ -155,9 +165,9 @@ def sync(
     client: Client,
     query: str,
     limit: Union[Unset, None, int] = 100,
-    start: Union[None, Unset, float, int, str] = UNSET,
-    end: Union[None, Unset, float, int, str] = UNSET,
-    step: Union[None, Unset, float, int, str] = UNSET,
+    start: Union[None, Unset, datetime.datetime, float, int] = UNSET,
+    end: Union[None, Unset, datetime.datetime, float, int] = UNSET,
+    step: Union[None, Unset, datetime.datetime, float, int] = UNSET,
     interval: Union[Unset, None, float] = UNSET,
     direction: Union[Unset, None, Direction] = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
@@ -166,9 +176,9 @@ def sync(
     Args:
         query (str):
         limit (Union[Unset, None, int]):  Default: 100.
-        start (Union[None, Unset, float, int, str]):
-        end (Union[None, Unset, float, int, str]):
-        step (Union[None, Unset, float, int, str]):
+        start (Union[None, Unset, datetime.datetime, float, int]):
+        end (Union[None, Unset, datetime.datetime, float, int]):
+        step (Union[None, Unset, datetime.datetime, float, int]):
         interval (Union[Unset, None, float]):
         direction (Union[Unset, None, Direction]):  Default: Direction.BACKWARD.
         x_scope_org_id (Union[Unset, str]):
@@ -195,9 +205,9 @@ async def asyncio_detailed(
     client: Client,
     query: str,
     limit: Union[Unset, None, int] = 100,
-    start: Union[None, Unset, float, int, str] = UNSET,
-    end: Union[None, Unset, float, int, str] = UNSET,
-    step: Union[None, Unset, float, int, str] = UNSET,
+    start: Union[None, Unset, datetime.datetime, float, int] = UNSET,
+    end: Union[None, Unset, datetime.datetime, float, int] = UNSET,
+    step: Union[None, Unset, datetime.datetime, float, int] = UNSET,
     interval: Union[Unset, None, float] = UNSET,
     direction: Union[Unset, None, Direction] = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
@@ -206,9 +216,9 @@ async def asyncio_detailed(
     Args:
         query (str):
         limit (Union[Unset, None, int]):  Default: 100.
-        start (Union[None, Unset, float, int, str]):
-        end (Union[None, Unset, float, int, str]):
-        step (Union[None, Unset, float, int, str]):
+        start (Union[None, Unset, datetime.datetime, float, int]):
+        end (Union[None, Unset, datetime.datetime, float, int]):
+        step (Union[None, Unset, datetime.datetime, float, int]):
         interval (Union[Unset, None, float]):
         direction (Union[Unset, None, Direction]):  Default: Direction.BACKWARD.
         x_scope_org_id (Union[Unset, str]):
@@ -240,9 +250,9 @@ async def asyncio(
     client: Client,
     query: str,
     limit: Union[Unset, None, int] = 100,
-    start: Union[None, Unset, float, int, str] = UNSET,
-    end: Union[None, Unset, float, int, str] = UNSET,
-    step: Union[None, Unset, float, int, str] = UNSET,
+    start: Union[None, Unset, datetime.datetime, float, int] = UNSET,
+    end: Union[None, Unset, datetime.datetime, float, int] = UNSET,
+    step: Union[None, Unset, datetime.datetime, float, int] = UNSET,
     interval: Union[Unset, None, float] = UNSET,
     direction: Union[Unset, None, Direction] = Direction.BACKWARD,
     x_scope_org_id: Union[Unset, str] = UNSET,
@@ -251,9 +261,9 @@ async def asyncio(
     Args:
         query (str):
         limit (Union[Unset, None, int]):  Default: 100.
-        start (Union[None, Unset, float, int, str]):
-        end (Union[None, Unset, float, int, str]):
-        step (Union[None, Unset, float, int, str]):
+        start (Union[None, Unset, datetime.datetime, float, int]):
+        end (Union[None, Unset, datetime.datetime, float, int]):
+        step (Union[None, Unset, datetime.datetime, float, int]):
         interval (Union[Unset, None, float]):
         direction (Union[Unset, None, Direction]):  Default: Direction.BACKWARD.
         x_scope_org_id (Union[Unset, str]):
