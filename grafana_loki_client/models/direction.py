@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class GetLokiApiV1QueryDirection(str, Enum):
+class Direction(str, Enum):
     FORWARD = "forward"
     BACKWARD = "backward"
 

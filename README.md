@@ -19,13 +19,14 @@ pip install python-loki-client
 This client is still incomplete and implements only the following endpoints:
 
 - `GET /loki/api/v1/query`
+- `GET /loki/api/v1/query_range`
 
 ## Usage
 
 First, create a client:
 
 ```python
-from loki_client import Client
+from grafana_loki_client import Client
 
 client = Client(base_url="https://loki.grafana.com")
 ```
@@ -33,9 +34,9 @@ client = Client(base_url="https://loki.grafana.com")
 Now call your endpoint and use your models:
 
 ```python
-from loki_client.models import MyDataModel
-from loki_client.api.my_tag import get_my_data_model
-from loki_client.types import Response
+from grafana_loki_client.models import MyDataModel
+from grafana_loki_client.api.my_tag import get_my_data_model
+from grafana_loki_client.types import Response
 
 my_data: MyDataModel = get_my_data_model.sync(client=client)
 # or if you need more info (e.g. status_code)
@@ -45,9 +46,9 @@ response: Response[MyDataModel] = get_my_data_model.sync_detailed(client=client)
 Or do the same thing with an async version:
 
 ```python
-from loki_client.models import MyDataModel
-from loki_client.api.my_tag import get_my_data_model
-from loki_client.types import Response
+from grafana_loki_client.models import MyDataModel
+from grafana_loki_client.api.my_tag import get_my_data_model
+from grafana_loki_client.types import Response
 
 my_data: MyDataModel = await get_my_data_model.asyncio(client=client)
 response: Response[MyDataModel] = await get_my_data_model.asyncio_detailed(client=client)

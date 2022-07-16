@@ -31,10 +31,54 @@ paths:
           in: query
           required: true
           schema:
-            enum:
-              - "forward"
-              - "backward"
-            default: "backward"
+            $ref: "#/components/schemas/Direction"
+        - name: X-Scope-OrgID
+          in: header
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QueryResponseBody"
+  /loki/api/v1/query_range:
+    get:
+      tags:
+        - Query Range
+      parameters:
+        - name: query
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            default: 100
+        - name: start
+          in: query
+          schema:
+            $ref: "#/components/schemas/TimestampFormat"
+        - name: end
+          in: query
+          schema:
+            $ref: "#/components/schemas/TimestampFormat"
+        - name: step
+          in: query
+          schema:
+            $ref: "#/components/schemas/TimestampFormat"
+        - name: interval
+          in: query
+          schema:
+            type: number
+        - name: direction
+          in: query
+          schema:
+            $ref: "#/components/schemas/Direction"
         - name: X-Scope-OrgID
           in: header
           schema:
@@ -48,6 +92,17 @@ paths:
                 $ref: "#/components/schemas/QueryResponseBody"
 components:
   schemas:
+    Direction:
+      enum:
+        - "forward"
+        - "backward"
+      default: "backward"
+    TimestampFormat:
+      oneOf:
+        - type: string
+          format: date-time
+        - type: integer
+        - type: number
     QueryResponseBody:
       required:
         - status
@@ -82,13 +137,13 @@ components:
     QueryResponseResult:
       type: object
       required:
-        - value
+        - values
       properties:
         metric:
           $ref: "#/components/schemas/QueryResponseMetric"
         streams:
           $ref: "#/components/schemas/QueryResponseStreams"
-        value:
+        values:
           type: array
           items:
             type: string
