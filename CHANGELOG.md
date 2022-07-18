@@ -1,3 +1,7 @@
+# v0.1.2
+
+- Update pin for `httpx` package
+
 # v0.1.1
 
 - added support of =the `GET /loki/api/v1/query_range` endpoint
