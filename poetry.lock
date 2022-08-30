@@ -264,7 +264,7 @@ python-versions = "*"
 
 [[package]]
 name = "openapi-python-client"
-version = "0.11.5"
+version = "0.11.6"
 description = "Generate modern Python clients from OpenAPI"
 category = "dev"
 optional = false
@@ -509,7 +509,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<4"
-content-hash = "04fdbde486dae0c255dd760ae926401411640bca405861fe4818b2f0de5405af"
+content-hash = "f599ed8680dd694ab4953ab1e5ba61992aa10e0ff57f39f0f76022d17b59c461"
 
 [metadata.files]
 anyio = [
@@ -672,8 +672,8 @@ mypy-extensions = [
     {file = "mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
 ]
 openapi-python-client = [
-    {file = "openapi-python-client-0.11.5.tar.gz", hash = "sha256:14f4079442ec7e4bb2b4bdf0d6a2cdf1977b0cec5511e692dee95c283ef8fdc2"},
-    {file = "openapi_python_client-0.11.5-py3-none-any.whl", hash = "sha256:830953a686f146de94fdd5d874f24908c9e2de51ff51c66f54b653e1e118cd31"},
+    {file = "openapi-python-client-0.11.6.tar.gz", hash = "sha256:88679bc41ed3d81d65ec394b2a50a48789e1752d7412f3698a9684009c2fc120"},
+    {file = "openapi_python_client-0.11.6-py3-none-any.whl", hash = "sha256:c15d8fa54994a96f1212819b4cb6c44ee21cb54ed98e054e8f7b5d0c07bf573d"},
 ]
 pathspec = [
     {file = "pathspec-0.9.0-py2.py3-none-any.whl", hash = "sha256:7d15c4ddb0b5c802d161efc417ec1a2558ea2653c2e8ad9c19098201dc1c993a"},
