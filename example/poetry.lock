@@ -32,7 +32,7 @@ tests_no_zope = ["cloudpickle", "coverage[toml] (>=5.0.2)", "hypothesis", "mypy"
 
 [[package]]
 name = "autoflake"
-version = "1.5.1"
+version = "1.5.3"
 description = "Removes unused imports and unused variables"
 category = "dev"
 optional = false
@@ -399,8 +399,8 @@ attrs = [
     {file = "attrs-21.4.0.tar.gz", hash = "sha256:626ba8234211db98e869df76230a137c4c40a12d72445c45d5f5b716f076e2fd"},
 ]
 autoflake = [
-    {file = "autoflake-1.5.1-py2.py3-none-any.whl", hash = "sha256:275e05e3caa8307269ad4d46f2e058b76a5c41ca7d1a7f57158d64e9df3ffdd6"},
-    {file = "autoflake-1.5.1.tar.gz", hash = "sha256:8272efbecf7c6d5e2b00fa3b2998478a3ad92d7c914a49a527d733dae7f800c5"},
+    {file = "autoflake-1.5.3-py2.py3-none-any.whl", hash = "sha256:90eb8d3f625bd72068eb670338ea7efcddbc5c6e822d3601e3dc9404c06ea8da"},
+    {file = "autoflake-1.5.3.tar.gz", hash = "sha256:44f7d7eb2c1c49505b513c0e93a5dfd3f7b4218283f50c5ca0af4df6b975d470"},
 ]
 black = [
     {file = "black-22.6.0-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:f586c26118bc6e714ec58c09df0157fe2d9ee195c764f630eb0d8e7ccce72e69"},
