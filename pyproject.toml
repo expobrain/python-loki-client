@@ -29,7 +29,7 @@ attrs = ">=20.1.0"
 python-dateutil = ">=2.8.0"
 
 [tool.poetry.dev-dependencies]
-autoflake = "^1.6"
+autoflake = "^1.7"
 black = "^22.10.0"
 isort = "^5.10.1"
 mypy = "^0.982"
