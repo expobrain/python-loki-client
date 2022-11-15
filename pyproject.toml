@@ -40,7 +40,7 @@ openapi-python-client = "^0.12.1"
 types-certifi = "^2021.10.8"
 click = "<9"
 toml = "^0.10.2"
-types-toml = "^0.10.7"
+types-toml = "^0.10.8"
 types-click = "^7.1.8"
 flake8-bugbear = "^22.10.27"
 
