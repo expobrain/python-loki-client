@@ -28,7 +28,7 @@ httpx = ">=0.22.0"
 attrs = ">=20.1.0"
 python-dateutil = ">=2.8.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 autoflake = "^1.7"
 black = "^22.10.0"
 isort = "^5.10.1"
@@ -43,10 +43,8 @@ toml = "^0.10.2"
 types-toml = "^0.10.8"
 types-click = "^7.1.8"
 flake8-bugbear = "^22.10.27"
-
-[tool.poetry.group.dev.dependencies]
-tomli = "^2.0.1"
-typed-ast = "^1.5.4"
+tomli = { version = "^2.0.1", python = "<3.11" }
+typed-ast = { version = "^1.5.4", python = "<3.8" }
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
