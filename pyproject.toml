@@ -46,6 +46,7 @@ flake8-bugbear = "^22.10.27"
 
 [tool.poetry.group.dev.dependencies]
 tomli = "^2.0.1"
+typed-ast = "^1.5.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
