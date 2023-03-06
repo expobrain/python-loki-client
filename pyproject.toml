@@ -30,7 +30,7 @@ python-dateutil = ">=2.8.0"
 
 [tool.poetry.group.dev.dependencies]
 autoflake = "^1.7"
-black = "^22.10.0"
+black = ">=22.10,<24.0"
 isort = "^5.10.1"
 mypy = ">=0.991,<1.1"
 flake8 = "^5.0.4"
