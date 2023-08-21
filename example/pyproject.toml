@@ -10,7 +10,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = ">=3.7,<4"
 python-loki-client = { path = "..", develop = true }
-click = "^8.1.6"
+click = "^8.1.7"
 
 [tool.poetry.dev-dependencies]
 mypy = "^1.4"
